@@ -76,12 +76,17 @@ http://127.0.0.1:8000
 POST /pipelines/parse
 
 Returns:
+
 Json
+
 
 {
   "num_nodes": int,
+  
   "num_edges": int,
+  
   "is_dag": bool
+  
 }
 
 👤 Author
