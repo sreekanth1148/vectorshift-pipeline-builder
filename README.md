@@ -1,42 +1,61 @@
 # VectorShift Pipeline Builder
 
-This project is a node-based pipeline builder built using ReactFlow (frontend) and FastAPI (backend).
+A node-based visual pipeline editor built using **ReactFlow (Frontend)** and **FastAPI (Backend)**.
 
-The application allows users to visually create pipelines using different node types, connect them, and validate the structure through backend integration.
-
-
-
-## Features
-
-- Node abstraction using a reusable BaseNode component
-- Custom node types: Input, LLM, Text, Output
-- Dynamic Text node with variable detection using {{variable}}
-- Auto-arrange functionality (Left → Right layout)
-- Animated edges
-- Backend integration to validate pipeline structure
-- DAG detection logic
-- Responsive and clean UI
+This application enables users to visually construct pipelines by connecting different node types and validates whether the pipeline forms a valid Directed Acyclic Graph (DAG) through backend integration.
 
 ---
 
-## Tech Stack
+## ✨ Features
 
-Frontend:
+- Reusable **BaseNode abstraction** for scalable node creation
+- Custom node types:
+  - Input
+  - LLM
+  - Text
+  - Output
+- Dynamic Text node with variable detection using `{{variable}}`
+- Auto-arrange functionality (Left → Right layout)
+- Animated edges for better visual clarity
+- Backend integration for pipeline validation
+- DAG detection using DFS-based cycle detection
+- Clean and responsive UI
+
+---
+
+## 🏗 Architecture Overview
+
+### Frontend
+- Built with React and ReactFlow
+- Centralized state management using Zustand
+- Modular node structure for extensibility
+- Visual edge-based data flow representation
+
+### Backend
+- Built using FastAPI
+- Receives pipeline structure (nodes + edges)
+- Constructs adjacency list representation
+- Performs cycle detection to validate DAG
+- Returns structured response with pipeline metadata
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 - React
 - ReactFlow
-- Zustand (state management)
+- Zustand
 
-Backend:
+### Backend
 - Python
 - FastAPI
 
 ---
 
-## How to Run
+## ▶️ How to Run
 
 ### Frontend
-
-```bash
 
 cd frontend
 npm install
@@ -44,21 +63,22 @@ npm start
 
 ###Backend
 
+
 cd backend
 uvicorn main:app --reload
+Backend will run at:
 
-##Backend Endpoint
 
+http://127.0.0.1:8000
+🔌 Backend Endpoint
 POST /pipelines/parse
-
 Returns:
+Json
 
 {
   "num_nodes": int,
   "num_edges": int,
   "is_dag": bool
 }
-
-##Author
-
+👤 Author
 Avula Sreekanth
