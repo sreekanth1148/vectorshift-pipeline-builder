@@ -80,5 +80,7 @@ Json
   "num_edges": int,
   "is_dag": bool
 }
+
 👤 Author
+
 Avula Sreekanth
